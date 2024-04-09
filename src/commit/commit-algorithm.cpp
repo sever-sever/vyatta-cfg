@@ -1308,6 +1308,8 @@ commit::doCommit(Cstore& cs, CfgNode& cfg1, CfgNode& cfg2)
   TRACE_INIT("Processing the Priority Queue");
   clear_last();
   int num = pq.size();
+  // decrease by one because we have one root element
+  --num;
   while (!dpq.empty()) {
     PrioNode *p = dpq.top();
     set_if_last(num+dpq.size());
