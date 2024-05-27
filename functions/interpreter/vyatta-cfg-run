@@ -627,7 +627,7 @@ _vyatta_cfg_init ()
             rollback)
               complete -F vyatta_rollback_complete ${cmd:0:$pos} ;;
             rollback-soft)
-              complete -F vyatta_rollback_complete ${cmd:0:$pos} ;;
+              complete -F vyatta_rollback-soft_complete ${cmd:0:$pos} ;;
             commit|commit-confirm)
                complete -F vyatta_commit_complete ${cmd:0:$pos} ;;
             *)
