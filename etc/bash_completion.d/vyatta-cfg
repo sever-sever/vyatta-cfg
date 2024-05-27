@@ -253,7 +253,40 @@ vyatta_rollback_complete ()
   if [ $COMP_CWORD -eq 1 -a -z "${COMP_WORDS[1]}" ]; then
       echo
       echo "Possible completions:"
-      echo -e "  <N>\tRollback to revision N (currently requires reboot)"
+      echo -e "  <N>\tRollback to revision N (requires reboot)"
+      echo -e "     \t(use rollback-soft for a non-disruptive rollback)
+      echo -e "\n  Revisions:"
+      print_commit_log
+      COMPREPLY=( "" " " )
+  else
+      echo -en "\nPossible completions:\n"
+      echo -en "  <Enter>\tExecute the current command"
+      COMPREPLY=( "" " " )
+  fi
+
+  eval $restore_shopts
+}
+
+vyatta_rollback-soft_complete ()
+{
+  # Generate completion help for the "rollback-soft" command
+
+  local restore_shopts=$( shopt -p extglob nullglob | tr \\n \; )
+  shopt -s extglob nullglob
+
+  if [[ $COMP_CWORD -eq 0 ]];then
+    vyatta_config_complete "$@"
+    eval $restore_shopts
+    return
+  fi
+
+  # Only provide completions after command name has been typed, but
+  # before any characters of the command argument have been entered.
+  if [ $COMP_CWORD -eq 1 -a -z "${COMP_WORDS[1]}" ]; then
+      echo
+      echo "Possible completions:"
+      echo -e "  <N>\tRollback to revision N"
+      echo -e "     \t(applies a diff that you can compare and commit)"
       echo -e "\n  Revisions:"
       print_commit_log
       COMPREPLY=( "" " " )
