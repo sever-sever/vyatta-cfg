@@ -254,7 +254,7 @@ vyatta_rollback_complete ()
       echo
       echo "Possible completions:"
       echo -e "  <N>\tRollback to revision N (requires reboot)"
-      echo -e "     \t(use rollback-soft for a non-disruptive rollback)
+      echo -e "     \t(use rollback-soft for a non-disruptive rollback)"
       echo -e "\n  Revisions:"
       print_commit_log
       COMPREPLY=( "" " " )
