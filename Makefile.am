@@ -1,6 +1,3 @@
-SUBDIRS = . perl_dmod
-
-share_perl5dir = /opt/vyatta/share/perl5/Vyatta
 completiondir	 = /etc/bash_completion.d
 initddir	 = /etc/init.d
 logrotatedir = /etc/logrotate.d
@@ -100,14 +97,6 @@ sbin_SCRIPTS  += scripts/vyatta-cfg-notify
 sbin_SCRIPTS  += scripts/vyatta-log-commit.pl
 sbin_SCRIPTS  += scripts/vyos-user-precommit-hooks.sh
 sbin_SCRIPTS  += scripts/vyos-user-postcommit-hooks.sh
-
-share_perl5_DATA = lib/Vyatta/Config.pm
-share_perl5_DATA += lib/Vyatta/File.pm
-share_perl5_DATA += lib/Vyatta/Misc.pm
-share_perl5_DATA += lib/Vyatta/ioctl.pm
-share_perl5_DATA += lib/Vyatta/Interface.pm
-share_perl5_DATA += lib/Vyatta/TypeChecker.pm
-share_perl5_DATA += lib/Vyatta/ConfigOutput.pm
 
 default_DATA = etc/default/vyatta-cfg
 default_DATA += etc/default/vyatta-load-boot

@@ -25,10 +25,6 @@ inst_opts := --sourcedir=debian/tmp
 autoreconf:
 	autoreconf -f -i
 
-override_dh_perl:
-	rm -f debian/files
-	dh_perl /opt/vyatta/share/perl5 /opt/vyatta/share/perl5/Vyatta
-
 override_dh_gencontrol:
 	rm -f debian/*/DEBIAN/conffiles
 	if [ -f "../.VYOS_DEV_BUILD" ]; then \
