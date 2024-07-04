@@ -3155,18 +3155,9 @@ Cstore::vexit_internal(const char *fmt, va_list alist)
   vsnprintf(buf, 256, fmt, alist);
   output_internal("%s\n", buf);
   fprintf(stderr, "DEBUG vexit_internal: %s\n", buf); // DEBUG
-  if (Perl_get_context()) {
-    /* we're in a perl context. do a croak to provide more information.
-     * note that the message should not end in "\n", or the croak message
-     * will be truncated for some reason.
-     */
-    Perl_croak_nocontext("%s", buf);
-    // does not return
-  } else {
-    // output error message and exit
-    output_user_err("%s\n", buf);
-    exit(1);
-  }
+  // output error message and exit
+  output_user_err("%s\n", buf);
+  exit(1);
 }
 
 } // end namespace cstore
