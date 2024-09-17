@@ -1,0 +1,14 @@
+name: Lint J2
+on:
+  pull_request_target:
+    branches:
+      - current
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  lint-j2:
+    uses: vyos/.github/.github/workflows/lint-j2.yml@current
+    secrets: inherit
